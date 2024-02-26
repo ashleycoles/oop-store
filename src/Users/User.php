@@ -16,4 +16,9 @@ abstract class User
         $this->postcode = $postcode;
         $this->email = $email;
     }
+
+    // For Part five, this abstract method ensures that all our different types of user are polymorphic - they behave in
+    // the exact same way. In the future, if we added more User types, this abstract method means they MUST all have a
+    // consistent way to get their address
+    abstract public function getAddress(): string;
 }

@@ -23,3 +23,6 @@ $businessBasket->addProduct($shoes);
 
 echo $customerBasket->display();
 echo $businessBasket->display();
+
+echo $customer->getAddress();
+echo $business->getAddress();

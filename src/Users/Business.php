@@ -20,4 +20,13 @@ class Business extends User
         $this->businessName = $businessName;
         $this->vatNumber = $vatNumber;
     }
+
+    public function getAddress(): string
+    {
+        return "<p>
+            $this->lastName, $this->firstName<br />
+            $this->businessName<br />
+            $this->addressStreet $this->postcode
+        </p>";
+    }
 }
