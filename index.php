@@ -25,10 +25,13 @@ $businessBasket->addProduct($hat);
 $businessBasket->addProduct($shoes);
 
 echo $customerBasket->display();
-echo $customerBasket->getProductsPrice();
+echo 'Products: ' . $customerBasket->getProductsPrice() . '<br />';
+echo 'Shipping: ' . $customerBasket->getShippingPrice() . '<br />';
+echo 'Total: ' . $customerBasket->getTotalPrice();
 
 echo $businessBasket->display();
-echo $businessBasket->getProductsPrice();
+echo 'Products: ' . $businessBasket->getProductsPrice() . '<br />';
+echo 'Shipping: ' . $businessBasket->getShippingPrice() . '<br />';
+echo 'Total: ' . $businessBasket->getTotalPrice();
 
-echo $customer->getAddress();
-echo $business->getAddress();
+

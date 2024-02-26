@@ -55,4 +55,6 @@ abstract class Product implements Displayable
 
         return " <li>$this->title - £$this->price</li>";
     }
+
+    abstract public function getShippingCost(): float;
 }

@@ -15,4 +15,22 @@ class LargeProduct extends Product
         $this->height = $height;
         $this->depth = $depth;
     }
+
+    public function getShippingCost(): float
+    {
+        if ($this->price > 10000) {
+            return 0;
+        }
+
+        if ($this->width < 200 && $this->height < 200 && $this->depth < 200) {
+            return 150;
+        }
+
+        if ($this->width > 500 || $this->height > 500 || $this->depth > 500) {
+            return 600;
+        }
+
+        return 200;
+
+    }
 }

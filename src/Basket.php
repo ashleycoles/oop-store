@@ -42,4 +42,20 @@ class Basket implements Displayable {
 
         return $total;
     }
+
+    public function getShippingPrice(): float
+    {
+        $total = 0;
+
+        foreach ($this->products as $product) {
+            $total += $product->getShippingCost();
+        }
+
+        return $total;
+    }
+
+    public function getTotalPrice(): float
+    {
+        return $this->getProductsPrice() + $this->getShippingPrice();
+    }
 }
