@@ -14,16 +14,28 @@ class Basket implements Displayable {
 
     public function addProduct(Product $product): void
     {
-        $this->products[$product->getTitle()] = $product;
+        if (!$this->productIsInBasket($product)) {
+            $this->products[$product->getTitle()] = [
+                'product' => $product,
+                'qty' => 1
+            ];
+        } else {
+            $this->products[$product->getTitle()]['qty']++;
+        }
     }
 
     public function removeProduct(Product $product): bool
     {
-        if (!isset($this->products[$product->getTitle()])) {
+        if (!$this->productIsInBasket($product)) {
             return false;
         }
 
-        unset($this->products[$product->getTitle()]);
+        if ($this->products[$product->getTitle()]['qty'] === 1) {
+            unset($this->products[$product->getTitle()]);
+            return true;
+        }
+
+        $this->products[$product->getTitle()]['qty']--;
         return true;
     }
 
@@ -31,7 +43,7 @@ class Basket implements Displayable {
     {
         $output = '<ul>';
         foreach($this->products as $product) {
-            $output .= $product->basketDisplay();
+            $output .= $product['product']->basketDisplay($product['qty']);
         }
         $output .= '</ul>';
 
@@ -43,7 +55,7 @@ class Basket implements Displayable {
         $total = 0;
 
         foreach ($this->products as $product) {
-            $total += $product->getDiscountedPrice();
+            $total += ($product['product']->getDiscountedPrice() * $product['qty']);
         }
         // If a customer does not have a VAT number, then we need to add 20% onto the total
         if (!isset($this->customer->vatNumber)) {
@@ -58,7 +70,7 @@ class Basket implements Displayable {
         $total = 0;
 
         foreach ($this->products as $product) {
-            $total += $product->getShippingCost();
+            $total += ($product['product']->getShippingCost() * $product['qty']);
         }
 
         return $total;
@@ -67,5 +79,10 @@ class Basket implements Displayable {
     public function getTotalPrice(): float
     {
         return $this->getProductsPrice() + $this->getShippingPrice();
+    }
+
+    protected function productIsInBasket(Product $product): bool
+    {
+        return isset($this->products[$product->getTitle()]);
     }
 }

@@ -51,14 +51,14 @@ abstract class Product implements Displayable
                 </div>";
     }
 
-    public function basketDisplay(): string
+    public function basketDisplay(int $qty = 1): string
     {
         if ($this->discount) {
 
-            return " <li>$this->title - £{$this->getDiscountedPrice()}</li>";
+            return " <li>$this->title - £{$this->getDiscountedPrice()} - qty: $qty</li>";
         }
 
-        return " <li>$this->title - £$this->price</li>";
+        return " <li>$this->title - £$this->price - qty: $qty</li>";
     }
 
     abstract public function getShippingCost(): float;

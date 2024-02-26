@@ -19,7 +19,10 @@ $businessBasket = new Basket($business);
 
 $customerBasket->addProduct($hat);
 $customerBasket->addProduct($shoes);
+$customerBasket->addProduct($shoes);
+$customerBasket->addProduct($shoes);
 $customerBasket->addProduct($shed);
+
 $customerBasket->removeProduct($shoes);
 
 $businessBasket->addProduct($hat);
