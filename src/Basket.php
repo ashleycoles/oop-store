@@ -4,10 +4,10 @@ require_once 'src/Product.php';
 require_once 'src/Interfaces/Displayable.php';
 
 class Basket implements Displayable {
-    protected string $customer;
+    protected User $customer;
     protected array $products;
 
-    public function __construct(string $customer)
+    public function __construct(User $customer)
     {
         $this->customer = $customer;
     }

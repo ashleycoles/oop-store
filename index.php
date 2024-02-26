@@ -2,13 +2,24 @@
 
 require_once 'src/Product.php';
 require_once 'src/Basket.php';
+require_once 'src/Users/Customer.php';
+require_once 'src/Users/Business.php';
+
 
 $hat = new Product('Hat', 'Lovely hat', 10, 10);
 $shoes = new Product('Shoes', 'Red shoes', 86.99);
 
-$basket = new Basket('Keith');
+$customer = new Customer('Keith', 'Smith', '123 street', 'ab123cd', 'keith@keith.com');
+$business = new Business('Keith', 'Smith', '123 street', 'ab123cd', 'keith@keithcorp.com', 'Keith Corp', '1234');
 
-$basket->addProduct($hat);
-$basket->addProduct($shoes);
+$customerBasket = new Basket($customer);
+$businessBasket = new Basket($business);
 
-echo $basket->display();
+$customerBasket->addProduct($hat);
+$customerBasket->addProduct($shoes);
+
+$businessBasket->addProduct($hat);
+$businessBasket->addProduct($shoes);
+
+echo $customerBasket->display();
+echo $businessBasket->display();
