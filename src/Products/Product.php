@@ -19,6 +19,11 @@ abstract class Product implements Displayable
         $this->discount = $discount;
     }
 
+    public function getTitle(): string
+    {
+        return $this->title;
+    }
+
     public function getDiscountedPrice(): float
     {
         if ($this->discount) {

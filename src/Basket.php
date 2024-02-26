@@ -14,7 +14,17 @@ class Basket implements Displayable {
 
     public function addProduct(Product $product): void
     {
-        $this->products[] = $product;
+        $this->products[$product->getTitle()] = $product;
+    }
+
+    public function removeProduct(Product $product): bool
+    {
+        if (!isset($this->products[$product->getTitle()])) {
+            return false;
+        }
+
+        unset($this->products[$product->getTitle()]);
+        return true;
     }
 
     public function display(): string
