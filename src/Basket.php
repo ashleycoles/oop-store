@@ -27,4 +27,19 @@ class Basket implements Displayable {
 
         return $output;
     }
+
+    public function getProductsPrice(): float
+    {
+        $total = 0;
+
+        foreach ($this->products as $product) {
+            $total += $product->getDiscountedPrice();
+        }
+        // If a customer does not have a VAT number, then we need to add 20% onto the total
+        if (!isset($this->customer->vatNumber)) {
+            $total *= 1.2;
+        }
+
+        return $total;
+    }
 }

@@ -22,7 +22,10 @@ $businessBasket->addProduct($hat);
 $businessBasket->addProduct($shoes);
 
 echo $customerBasket->display();
+echo $customerBasket->getProductsPrice();
+
 echo $businessBasket->display();
+echo $businessBasket->getProductsPrice();
 
 echo $customer->getAddress();
 echo $business->getAddress();
