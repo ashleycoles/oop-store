@@ -1,6 +1,6 @@
 <?php
 
-require_once 'src/Product.php';
+require_once 'src/Products/Product.php';
 require_once 'src/Interfaces/Displayable.php';
 
 class Basket implements Displayable {

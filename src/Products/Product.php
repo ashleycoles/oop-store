@@ -2,7 +2,7 @@
 
 require_once 'src/Interfaces/Displayable.php';
 
-class Product implements Displayable
+abstract class Product implements Displayable
 {
     protected string $title;
     protected string $description;
