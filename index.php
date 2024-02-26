@@ -2,7 +2,7 @@
 
 require_once 'src/Product.php';
 
-$hat = new Product('Hat', 'Lovely hat', 10);
+$hat = new Product('Hat', 'Lovely hat', 10, 10);
 $shoes = new Product('Shoes', 'Red shoes', 86.99);
 
 echo $hat->display();
