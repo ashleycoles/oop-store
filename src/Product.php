@@ -1,7 +1,8 @@
 <?php
 
+require_once 'src/Interfaces/Displayable.php';
 
-class Product
+class Product implements Displayable
 {
     protected string $title;
     protected string $description;
@@ -43,5 +44,15 @@ class Product
                     <span>£$this->price</span>
                     <p>$this->description</p>
                 </div>";
+    }
+
+    public function basketDisplay(): string
+    {
+        if ($this->discount) {
+
+            return " <li>$this->title - £{$this->getDiscountedPrice()}</li>";
+        }
+
+        return " <li>$this->title - £$this->price</li>";
     }
 }
